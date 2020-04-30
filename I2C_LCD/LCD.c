@@ -9,7 +9,6 @@ void delay_ms(int t){
 }
 
 void LCD_Init(uint8_t I2C_Add){
-  i2c_start_addr(I2C1,I2C_Add,Write);
   IO_Expander_Write(0x00);
   delay_ms(50);  // wait for >40ms
   LCD_CMD(0x03);

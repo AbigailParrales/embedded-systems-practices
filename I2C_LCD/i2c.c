@@ -38,9 +38,8 @@ void i2c_configure(uint32_t i2c) {
 /*********************************************************************
  * Start I2C Read/Write Transaction with indicated 7-bit address:
  *********************************************************************/
-
+/*
 void i2c_start_addr(uint32_t i2c,uint8_t addr,enum I2C_RW rw) {
-
 	if ( rw == Read )
 		i2c_enable_ack(i2c);
 	i2c_send_start(i2c);		// Generate a Start/Restart
@@ -66,17 +65,34 @@ void i2c_start_addr(uint32_t i2c,uint8_t addr,enum I2C_RW rw) {
 	}
 
 	(void)I2C_SR2(i2c);		// Clear flags
-}
+}*/
 
 /*********************************************************************
  * Write one byte of data
  *********************************************************************/
 
 void i2c_write(uint32_t i2c,uint8_t byte) {
+	//Send START
+	i2c_send_start(i2c);
+
+	// Loop until ready:
+	while ( !((I2C_SR1(i2c) & I2C_SR1_SB)
+	  && (I2C_SR2(i2c) & (I2C_SR2_MSL|I2C_SR2_BUSY))) ) {}
+
+	// Send Address -- Write
+	i2c_send_7bit_address(i2c,0x4E,I2C_WRITE);
+
+	// Wait until completion, NAK or timeout
+	while ( !(I2C_SR1(i2c) & I2C_SR1_ADDR) ) {}
+
+	(void)I2C_SR2(i2c);		// Clear flags
 
 	i2c_send_data(i2c,byte);
-	while ( !(I2C_SR1(i2c) & (I2C_SR1_BTF)) ) {
-	}
+
+	//Wait for transmision complete
+	while ( !(I2C_SR1(i2c) & (I2C_SR1_BTF)) ) {}
+
+	i2c_send_stop(i2c);
 }
 
 // i2c.c
