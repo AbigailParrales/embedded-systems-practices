@@ -33,25 +33,31 @@ void i2c_configure(uint32_t i2c) {
 	i2c_peripheral_enable(i2c);
 }
 
+/*********************************************************************
+ * Return when I2C is not busy
+ *********************************************************************/
 
+void i2c_wait_busy(uint32_t i2c) {
+	while ( I2C_SR2(i2c) & I2C_SR2_BUSY ){}
+}
 
 /*********************************************************************
  * Start I2C Read/Write Transaction with indicated 7-bit address:
  *********************************************************************/
-/*
-void i2c_start_addr(uint32_t i2c,uint8_t addr,enum I2C_RW rw) {
-	if ( rw == Read )
-		i2c_enable_ack(i2c);
+
+void i2c_start_addr(uint32_t i2c,uint8_t addr) {
+	i2c_wait_busy(i2c);			// Block until not busy
+	I2C_SR1(i2c) &= ~I2C_SR1_AF;	// Clear Acknowledge failure
+	i2c_clear_stop(i2c);		// Do not generate a Stop
+	
 	i2c_send_start(i2c);		// Generate a Start/Restart
 
 	// Loop until ready:
-        while ( !((I2C_SR1(i2c) & I2C_SR1_SB) 
-	  && (I2C_SR2(i2c) & (I2C_SR2_MSL|I2C_SR2_BUSY))) ) {
-	}
+	while ( !((I2C_SR1(i2c) & I2C_SR1_SB) 
+	  && (I2C_SR2(i2c) & (I2C_SR2_MSL|I2C_SR2_BUSY))) ) {}
 
 	// Send Address & R/W flag:
-	i2c_send_7bit_address(i2c,addr,
-		rw == Read ? I2C_READ : I2C_WRITE);
+	i2c_send_7bit_address(i2c,addr,I2C_WRITE);
 
 	// Wait until completion, NAK or timeout
 	while ( !(I2C_SR1(i2c) & I2C_SR1_ADDR) ) {
@@ -65,13 +71,22 @@ void i2c_start_addr(uint32_t i2c,uint8_t addr,enum I2C_RW rw) {
 	}
 
 	(void)I2C_SR2(i2c);		// Clear flags
-}*/
+}
+
+/*********************************************************************
+ * Send stop
+ *********************************************************************/
+
+void i2c_stop(uint32_t i2c) {
+	i2c_send_stop(i2c);
+}
 
 /*********************************************************************
  * Write one byte of data
  *********************************************************************/
 
 void i2c_write(uint32_t i2c,uint8_t byte) {
+	/*
 	//Send START
 	i2c_send_start(i2c);
 
@@ -86,13 +101,13 @@ void i2c_write(uint32_t i2c,uint8_t byte) {
 	while ( !(I2C_SR1(i2c) & I2C_SR1_ADDR) ) {}
 
 	(void)I2C_SR2(i2c);		// Clear flags
-
+	*/
 	i2c_send_data(i2c,byte);
 
 	//Wait for transmision complete
 	while ( !(I2C_SR1(i2c) & (I2C_SR1_BTF)) ) {}
 
-	i2c_send_stop(i2c);
+	//i2c_send_stop(i2c);
 }
 
 // i2c.c

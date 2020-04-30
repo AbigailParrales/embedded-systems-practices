@@ -21,9 +21,10 @@ typedef struct {
 } I2C_Control;
 
 void i2c_configure(uint32_t i2c);
-//void i2c_start_addr(uint32_t i2c,uint8_t addr,enum I2C_RW rw);
+void i2c_start_addr(uint32_t i2c,uint8_t addr);
 void i2c_write(uint32_t i2c,uint8_t byte);
-inline void i2c_stop(uint32_t i2c) { i2c_send_stop(i2c); }
+void i2c_stop(uint32_t i2c);
+void i2c_wait_busy(uint32_t i2c);
 
 #endif // I2C_H
 
