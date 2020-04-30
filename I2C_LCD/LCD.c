@@ -1,18 +1,15 @@
 #include "LCD.h"
 #include "i2c.h"
 
-static I2C_Control i2c;			// I2C Control struct
-unsigned char RS, i2c_add, BackLight_State = LCD_BACKLIGHT;
+unsigned char RS, BackLight_State = LCD_BACKLIGHT;
 
 
 void delay_ms(int t){
     for (int i=0; i<(t*8000); i++);
 }
 
-void LCD_Init(uint8_t I2C_Add)
-{
-  i2c_add = I2C_Add;
-  i2c_start_addr(&i2c,I2C_Add,Write);
+void LCD_Init(uint8_t I2C_Add){
+  i2c_start_addr(I2C1,I2C_Add,Write);
   IO_Expander_Write(0x00);
   delay_ms(50);  // wait for >40ms
   LCD_CMD(0x03);
@@ -35,7 +32,7 @@ void LCD_Init(uint8_t I2C_Add)
 
 void IO_Expander_Write(unsigned char Data)
 {
-  i2c_write(&i2c,Data);//i2c_write(&i2c,value&0x0FF); asi viene en el ejemplo   
+  i2c_write(I2C1,Data);//i2c_write(&i2c,value&0x0FF); asi viene en el ejemplo   
 }
 
 void LCD_Write_4Bit(unsigned char Nibble)

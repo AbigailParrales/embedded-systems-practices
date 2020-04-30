@@ -18,7 +18,6 @@
 #include "i2c.h"
 #include "LCD.h"
 
-static I2C_Control i2c;			// I2C Control struct
 //#define PCF8574_ADDR(n)		(0x20|((n)&7))	// PCF8574
 #define PCF8574_ADDR(n)	(0x38|((n)&7))	// PCF8574A
 
@@ -49,7 +48,7 @@ main(void) {
 	gpio_primary_remap(0,0); 
 
 	// Configure I2C1
-	i2c_configure(&i2c,I2C1,1000);
+	i2c_configure(I2C1);
 
 	/*********************************************
 	* This example performs a write transaction,
