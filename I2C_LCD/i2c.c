@@ -3,7 +3,7 @@
 * Copyright 2020 ITESM                                                  *
 *                                                                       *
 *                                                                       *
-* LCD_I2C                                                              *
+* LCD_I2C                                                               *
 *                                                                       *
 * Autorhs:                                                              *
 * Jesús Enrique Luna Medina          A01632334                          *
@@ -11,7 +11,7 @@
 * Luis Cortés Leal                   A01631163                          *
 *                                                                       *
 * Abril 2020                                                            *
-* The project titled LCD_I2C is carried out with the purpose of        *
+* The project titled LCD_I2C is carried out with the purpose of         *
 * implementing a temperature sensing system which acquires the          *
 * values from the environment and delivers a response through           *
 * hardware using LEDs and software displaying on a Terminal.            *
