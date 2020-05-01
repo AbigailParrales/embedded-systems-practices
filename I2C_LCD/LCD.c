@@ -17,19 +17,19 @@ void LCD_Init(unsigned char I2C_Add)
   LCD_CMD(0x03);
   delay_ms(5);
   LCD_CMD(0x03);
-  delay_ms(1);
+  delay_ms(5);
   LCD_CMD(0x03);
-  delay_ms(1);
+  delay_ms(5);
   LCD_CMD(LCD_RETURN_HOME);
-  delay_ms(1);
+  delay_ms(5);
   LCD_CMD(0x20 | (LCD_TYPE << 2));
-  delay_ms(1);
+  delay_ms(50);
   LCD_CMD(LCD_TURN_ON);
-  delay_ms(1);
+  delay_ms(50);
   LCD_CMD(LCD_CLEAR);
-  delay_ms(1);
+  delay_ms(50);
   LCD_CMD(LCD_ENTRY_MODE_SET | LCD_RETURN_HOME);
-  delay_ms(1);
+  delay_ms(50);
   
 }
 
@@ -56,8 +56,9 @@ void LCD_CMD(unsigned char CMD)
 void LCD_Write_Char(char Data)
 {
   RS = 1; // Data Register Select
-  LCD_Write_4Bit(Data & 0xF0);
   LCD_Write_4Bit((Data << 4) & 0xF0);
+  LCD_Write_4Bit(Data & 0xF0);
+  
 }
 
 void LCD_Write_String(char* Str)

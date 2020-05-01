@@ -26,6 +26,10 @@ int main(void) {
 	//uint8_t addr = PCF8574_ADDR(0);	// I2C Address
 	//uint8_t addr = 0x4E;
 	uint8_t addr = 0x27;
+	char* txt_1 = "Hola";
+	char* txt_2 = "Mundo";
+	//char tst = 0b00010110;
+	char tst = 'a';
 
 	rcc_clock_setup_in_hse_8mhz_out_72mhz();// For "blue pill"
 	rcc_periph_clock_enable(RCC_GPIOC);	// LED
@@ -55,14 +59,32 @@ int main(void) {
 	*********************************************/
 	LCD_Init(addr);
 
+/*
+	char* txt_1 = "Hola";
+	char* txt_2 = "Mundo";
+*/
+/*
+    LCD_Set_Cursor(1, 1);
+    LCD_Write_String(txt_1);
+    LCD_Set_Cursor(2, 1);  
+    LCD_Write_String(txt_2);
+*/
 	LCD_Set_Cursor(1, 1);
+	int c = '0';
 	
-  	LCD_Write_String("aaaaaaaaaa");
-  	LCD_Set_Cursor(2, 1);
-  	LCD_Write_String("bbbbbbbbbb");
-
+	for (c;c < ('9'+1);c++){
+		LCD_Write_Char(c);
+	}
+	//LCD_Set_Cursor(2, 1); 
+	//LCD_Write_Char('A');
+	/*
+	c = 'A';
 	
-	for (;;);
+	for (c;c < ('Z'+1);c++){
+		LCD_Write_Char(c);
+	}
+	*/
+	for(;;);
 	return 0;
 }
 
