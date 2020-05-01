@@ -1,45 +1,19 @@
-
-/************************************************************************
-* Copyright 2020 ITESM                                                  *
-*                                                                       *
-*                                                                       *
-* LCD_I2C                                                              *
-*                                                                       *
-* Autorhs:                                                              *
-* Jesús Enrique Luna Medina          A01632334                          *
-* Daniela abigail Parrales Mejía     A01228629                          *
-* Luis Cortés Leal                   A01631163                          *
-*                                                                       *
-* Abril 2020                                                            *
-* The project titled LCD_I2C is carried out with the purpose of        *
-* implementing a temperature sensing system which acquires the          *
-* values from the environment and delivers a response through           *
-* hardware using LEDs and software displaying on a Terminal.            *
-*                                                                       *
-************************************************************************/
-
-/*!< LIBRARIES */ 
 #include "LCD.h"
 #include "i2c.h"
 #include <libopencm3/stm32/gpio.h>
 
-/***********************************************************************/
-
 unsigned char RS, i2c_add, BackLight_State = LCD_BACKLIGHT;
-
-/***********************************************************************/
 
 void delay_ms(int t){
     for (int i=0; i<(t*8000); i++);
 }
 
-/***********************************************************************/
-
-void LCD_Init(unsigned char I2C_Add){
+void LCD_Init(unsigned char I2C_Add)
+{
   gpio_clear(GPIOA, GPIO7);
   i2c_add = I2C_Add;
   IO_Expander_Write(0x00);
-  delay_ms(50);  /*!< wait for more than 40ms */
+  delay_ms(50);  // wait for >40ms
   LCD_CMD(0x03);
   delay_ms(5);
   LCD_CMD(0x03);
@@ -56,17 +30,15 @@ void LCD_Init(unsigned char I2C_Add){
   delay_ms(50);
   LCD_CMD(LCD_ENTRY_MODE_SET | LCD_RETURN_HOME);
   delay_ms(50);
+  
 }
-
-/***********************************************************************/
 
 void IO_Expander_Write(unsigned char Data){
   i2c_write_8bits(i2c_add, Data | BackLight_State);
 }
 
-/***********************************************************************/
-
-void LCD_Write_4Bit(unsigned char Nibble){
+void LCD_Write_4Bit(unsigned char Nibble)
+{
   // Get The RS Value To LSB OF Data
   Nibble |= RS;
   IO_Expander_Write(Nibble | 0x04);
@@ -74,33 +46,31 @@ void LCD_Write_4Bit(unsigned char Nibble){
   delay_ms(1);
 }
 
-/***********************************************************************/
-
-void LCD_CMD(unsigned char CMD){
-  RS = 0; /*!< Select the register for commands */
+void LCD_CMD(unsigned char CMD)
+{
+  RS = 0; // Command Register Select
   LCD_Write_4Bit(CMD & 0xF0);
   LCD_Write_4Bit((CMD << 4) & 0xF0);
 }
 
-/***********************************************************************/
-
-void LCD_Write_Char(char Data){
-  RS = 1; /*!< Select thr register for data */
+void LCD_Write_Char(char Data)
+{
+  RS = 1; // Data Register Select
   LCD_Write_4Bit((Data << 4) & 0xF0);
   LCD_Write_4Bit(Data & 0xF0);
+  
 }
 
-/***********************************************************************/
-
-void LCD_Write_String(char* Str){
+void LCD_Write_String(char* Str)
+{
   for(int i=0; Str[i]!='\0'; i++)
     LCD_Write_Char(Str[i]);
 }
 
-/***********************************************************************/
-
-void LCD_Set_Cursor(unsigned char ROW, unsigned char COL){
-  switch(ROW) {
+void LCD_Set_Cursor(unsigned char ROW, unsigned char COL)
+{
+  switch(ROW) 
+  {
     case 2:
       LCD_CMD(0xC0 + COL-1);
       break;
@@ -116,10 +86,8 @@ void LCD_Set_Cursor(unsigned char ROW, unsigned char COL){
   }
 }
 
-/***********************************************************************/
 
-void LCD_putc(char ch){
+void LCD_putc(char ch)  {
     LCD_Write_Char(ch);
 }
 
-/***********************************************************************/
