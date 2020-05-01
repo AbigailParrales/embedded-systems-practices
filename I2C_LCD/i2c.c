@@ -14,6 +14,9 @@
  *	9. 100 kHz
  */
 
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
+
 #include "i2c.h"
 
 /*********************************************************************
@@ -21,6 +24,18 @@
  *********************************************************************/
 
 void i2c_configure(uint32_t i2c) {
+	rcc_periph_clock_enable(RCC_GPIOB);	// I2C
+	rcc_periph_clock_enable(RCC_I2C1);	// I2C
+
+	gpio_set_mode(GPIOB,
+		GPIO_MODE_OUTPUT_50_MHZ,
+		GPIO_CNF_OUTPUT_ALTFN_OPENDRAIN,
+		GPIO6|GPIO7);			// I2C
+	gpio_set(GPIOB,GPIO6|GPIO7);		// Idle high
+			     
+	// AFIO_MAPR_I2C1_REMAP=0, PB6+PB7
+	gpio_primary_remap(0,0); 
+
 	i2c_peripheral_disable(i2c);
 	i2c_reset(i2c);
 	I2C_CR1(i2c) &= ~I2C_CR1_STOP;	// Clear stop

@@ -1,39 +1,40 @@
 #include "LCD.h"
 #include "i2c.h"
 
-unsigned char RS, BackLight_State = LCD_BACKLIGHT;
+unsigned char RS, i2c_add, BackLight_State = LCD_BACKLIGHT;
 
 
 void delay_ms(int t){
     for (int i=0; i<(t*8000); i++);
 }
 
-void LCD_Init(uint8_t I2C_Add){
+void LCD_Init(unsigned char I2C_Add){
+  i2c_add = I2C_Add;
   IO_Expander_Write(0x00);
   delay_ms(50);  // wait for >40ms
   LCD_CMD(0x03);
   delay_ms(5);
   LCD_CMD(0x03);
-  delay_ms(5);
+  delay_ms(1);
   LCD_CMD(0x03);
-  delay_ms(5);
+  delay_ms(1);
   LCD_CMD(LCD_RETURN_HOME);
-  delay_ms(5);
+  delay_ms(1);
   LCD_CMD(0x20 | (LCD_TYPE << 2));
-  delay_ms(50);
+  delay_ms(1);
   LCD_CMD(LCD_TURN_ON);
-  delay_ms(50);
+  delay_ms(1);
   LCD_CMD(LCD_CLEAR);
-  delay_ms(50);
+  delay_ms(1);
   LCD_CMD(LCD_ENTRY_MODE_SET | LCD_RETURN_HOME);
-  delay_ms(50);
+  delay_ms(1);
 }
 
 void IO_Expander_Write(unsigned char Data){
-  i2c_start_addr(I2C1,0x4E);
+  i2c_start_addr(I2C1,i2c_add);
   //0x4E
   //i2c_write(I2C1, Data);
-  i2c_write(I2C1,Data | BackLight_State);//i2c_write(&i2c,value&0x0FF); asi viene en el ejemplo   
+  i2c_write(I2C1, Data | BackLight_State);//i2c_write(&i2c,value&0x0FF); asi viene en el ejemplo   
   i2c_stop(I2C1);
 }
 
@@ -43,7 +44,7 @@ void LCD_Write_4Bit(unsigned char Nibble)
   Nibble |= RS;
   IO_Expander_Write(Nibble | 0x04);
   IO_Expander_Write(Nibble & 0xFB);
-  delay_ms(50);
+  delay_ms(1);
 }
 
 void LCD_CMD(unsigned char CMD)

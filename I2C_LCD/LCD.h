@@ -23,7 +23,7 @@
 #define LCD_SHIFT_RIGHT       0x1E
 #define LCD_TYPE              2 // 0 -> 5x7 | 1 -> 5x10 | 2 -> 2 lines
 
-void LCD_Init(uint8_t I2C_Add);
+void LCD_Init(unsigned char I2C_Add);
 void IO_Expander_Write(unsigned char Data);
 void LCD_Write_4Bit(unsigned char Nibble);
 void LCD_CMD(unsigned char CMD);
