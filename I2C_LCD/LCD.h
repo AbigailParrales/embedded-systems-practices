@@ -1,7 +1,30 @@
-#ifndef LCD_H_  /* Include guard */  // Cpplint says otherwise
+
+/************************************************************************
+* Copyright 2020 ITESM                                                  *
+*                                                                       *
+*                                                                       *
+* LCD_I2C                                                              *
+*                                                                       *
+* Autorhs:                                                              *
+* Jesús Enrique Luna Medina          A01632334                          *
+* Daniela abigail Parrales Mejía     A01228629                          *
+* Luis Cortés Leal                   A01631163                          *
+*                                                                       *
+* Abril 2020                                                            *
+* The project titled LCD_I2C is carried out with the purpose of        *
+* implementing a temperature sensing system which acquires the          *
+* values from the environment and delivers a response through           *
+* hardware using LEDs and software displaying on a Terminal.            *
+*                                                                       *
+************************************************************************/
+
+/*!< Conditions to confirm if macro-identifier is defined */
+#ifndef LCD_H_  /*!< Include guard */ 
 #define LCD_H_
 
+/***********************************************************************/
 
+/*!< VARIABLES */
 #define LCD_BACKLIGHT         0x08
 #define LCD_NOBACKLIGHT       0x00
 #define LCD_FIRST_ROW         0x80
@@ -20,7 +43,9 @@
 #define LCD_TURN_OFF          0x08
 #define LCD_SHIFT_LEFT        0x18
 #define LCD_SHIFT_RIGHT       0x1E
-#define LCD_TYPE              2 // 0 -> 5x7 | 1 -> 5x10 | 2 -> 2 lines
+#define LCD_TYPE              2 /*!< 0 -> 5x7 | 1 -> 5x10 | 2 -> 2 lines */
+
+/***********************************************************************/
 
 void LCD_Init(unsigned char I2C_Add);
 void IO_Expander_Write(unsigned char Data);
@@ -33,4 +58,6 @@ void LCD_putc(char ch);
 int LCD_printf(const char *format, ...);
 void delay_ms(int t);
 
-#endif  // ABSTRACTION_AND_DOCUMENTATION_DIMMER_LCD_H_
+/***********************************************************************/
+
+#endif
