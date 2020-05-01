@@ -1,14 +1,16 @@
 #include "LCD.h"
 #include "i2c.h"
+#include <libopencm3/stm32/gpio.h>
 
 unsigned char RS, i2c_add, BackLight_State = LCD_BACKLIGHT;
-
 
 void delay_ms(int t){
     for (int i=0; i<(t*8000); i++);
 }
 
-void LCD_Init(unsigned char I2C_Add){
+void LCD_Init(unsigned char I2C_Add)
+{
+  gpio_clear(GPIOA, GPIO7);
   i2c_add = I2C_Add;
   IO_Expander_Write(0x00);
   delay_ms(50);  // wait for >40ms
@@ -28,14 +30,11 @@ void LCD_Init(unsigned char I2C_Add){
   delay_ms(1);
   LCD_CMD(LCD_ENTRY_MODE_SET | LCD_RETURN_HOME);
   delay_ms(1);
+  
 }
 
 void IO_Expander_Write(unsigned char Data){
-  i2c_start_addr(I2C1,i2c_add);
-  //0x4E
-  //i2c_write(I2C1, Data);
-  i2c_write(I2C1, Data | BackLight_State);//i2c_write(&i2c,value&0x0FF); asi viene en el ejemplo   
-  i2c_stop(I2C1);
+  i2c_write_8bits(i2c_add, Data | BackLight_State);
 }
 
 void LCD_Write_4Bit(unsigned char Nibble)

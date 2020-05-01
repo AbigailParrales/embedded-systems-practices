@@ -23,11 +23,21 @@
 
 
 int main(void) {
-	uint8_t addr = PCF8574_ADDR(0);	// I2C Address
+	//uint8_t addr = PCF8574_ADDR(0);	// I2C Address
+	//uint8_t addr = 0x4E;
+	uint8_t addr = 0x27;
 
 	rcc_clock_setup_in_hse_8mhz_out_72mhz();// For "blue pill"
 	rcc_periph_clock_enable(RCC_GPIOC);	// LED
-
+	/*****/
+	rcc_periph_clock_enable(RCC_GPIOA);
+	gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, 
+                  GPIO_CNF_OUTPUT_PUSHPULL, GPIO5|GPIO7);
+    
+    /*!< LEDs are turned off */
+    gpio_set(GPIOA, GPIO5);
+	gpio_set(GPIOA, GPIO7);
+	/*****/
 	gpio_set_mode(GPIOC,
 		GPIO_MODE_OUTPUT_2_MHZ,
 		GPIO_CNF_OUTPUT_PUSHPULL,
@@ -35,7 +45,9 @@ int main(void) {
 	gpio_set(GPIOC,GPIO13);			// PC13 LED dark
 
 	// Configure I2C1
-	i2c_configure(I2C1);
+	//i2c_configure(I2C1);
+	i2c_setup();
+	gpio_clear(GPIOA, GPIO5);
 
 	/*********************************************
 	* This example performs a write transaction,
@@ -44,9 +56,10 @@ int main(void) {
 	LCD_Init(addr);
 
 	LCD_Set_Cursor(1, 1);
-  	LCD_Write_String(" Khaled Magdy");
+	
+  	LCD_Write_String("aaaaaaaaaa");
   	LCD_Set_Cursor(2, 1);
-  	LCD_Write_String(" DeepBlue");
+  	LCD_Write_String("bbbbbbbbbb");
 
 	
 	for (;;);
