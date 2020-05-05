@@ -3,18 +3,17 @@
 * Copyright 2020 ITESM                                                  *
 *                                                                       *
 *                                                                       *
-* ADC_UART                                                              *
+* Second Partial Exam                                                   *
 *                                                                       *
 * Autorhs:                                                              *
 * Jesús Enrique Luna Medina          A01632334                          *
 * Daniela abigail Parrales Mejía     A01228629                          *
 * Luis Cortés Leal                   A01631163                          *
+* Victor Joseph Guerrero             A01375994                          *
 *                                                                       *
-* Abril 2020                                                            *
-* The project titled ADC_UART is carried out with the purpose of        *
-* implementing a temperature sensing system which acquires the          *
-* values from the environment and delivers a response through           *
-* hardware using LEDs and software displaying on a Terminal.            *
+* Mayo  2020                                                            *
+* This program is a cronometer which includes three buttons             *
+* in order to control the functions of: Reset, Start and Stop           *
 *                                                                       *
 ************************************************************************/
 
@@ -26,7 +25,7 @@
 #include "unsere_uart.h"
 #include "../2da_capa/unsere_log.h"
 
-/********************************************************************/
+/**********************************************************************/
 
 /********************************************************************
 * The creation of a message, will an specificed limit, the message  *
@@ -44,13 +43,11 @@ void uart_setup(void) {
     usart_set_mode(USART1, USART_MODE_TX_RX);
     usart_set_parity(USART1, USART_PARITY_NONE);
     usart_set_flow_control(USART1, USART_FLOWCONTROL_NONE);
-
     usart_enable_rx_interrupt(USART1); /*!< Local enable of interruption */
-
     usart_enable(USART1);
-
 }
 
+/*!< Return if the ASCII is a number from 0 to 9. */
 int is_number(char ch) {
     if((ch >= 48) && (ch<=57)){
         return 1;
