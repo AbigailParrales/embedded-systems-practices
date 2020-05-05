@@ -1,0 +1,73 @@
+\hypertarget{unsere__rcc_8c}{}\section{1ra\+\_\+capa/unsere\+\_\+rcc.c File Reference}
+\label{unsere__rcc_8c}\index{1ra\+\_\+capa/unsere\+\_\+rcc.\+c@{1ra\+\_\+capa/unsere\+\_\+rcc.\+c}}
+{\ttfamily \#include $<$libopencm3/stm32/rcc.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}unsere\+\_\+rcc.\+h\char`\"{}}\newline
+Include dependency graph for unsere\+\_\+rcc.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unsere__rcc_8c_af6cdce8515b9e6a6181f44410de7e793}{setting\+\_\+clock} (void)
+\item 
+void \hyperlink{unsere__rcc_8c_a1a6c13fee2e21e52b274c2e40764cd41}{rcc\+\_\+setups\+\_\+for\+\_\+gpio} (void)
+\item 
+void \hyperlink{unsere__rcc_8c_a1d1f9b3b84e39cfc042dd40a6a4cc545}{rcc\+\_\+setups\+\_\+for\+\_\+uart} (void)
+\item 
+void \hyperlink{unsere__rcc_8c_ad9629fea3c3a45930521dc19a5c6e842}{rcc\+\_\+setup} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unsere__rcc_8c_ad9629fea3c3a45930521dc19a5c6e842}\label{unsere__rcc_8c_ad9629fea3c3a45930521dc19a5c6e842}} 
+\index{unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}!rcc\+\_\+setup@{rcc\+\_\+setup}}
+\index{rcc\+\_\+setup@{rcc\+\_\+setup}!unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}}
+\subsubsection{\texorpdfstring{rcc\+\_\+setup()}{rcc\_setup()}}
+{\footnotesize\ttfamily void rcc\+\_\+setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+43                      \{
+44     \hyperlink{unsere__rcc_8c_af6cdce8515b9e6a6181f44410de7e793}{setting\_clock}();
+45     \hyperlink{unsere__rcc_8c_a1a6c13fee2e21e52b274c2e40764cd41}{rcc\_setups\_for\_gpio}();
+46     \hyperlink{unsere__rcc_8c_a1d1f9b3b84e39cfc042dd40a6a4cc545}{rcc\_setups\_for\_uart}();
+47 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__rcc_8c_a1a6c13fee2e21e52b274c2e40764cd41}\label{unsere__rcc_8c_a1a6c13fee2e21e52b274c2e40764cd41}} 
+\index{unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}!rcc\+\_\+setups\+\_\+for\+\_\+gpio@{rcc\+\_\+setups\+\_\+for\+\_\+gpio}}
+\index{rcc\+\_\+setups\+\_\+for\+\_\+gpio@{rcc\+\_\+setups\+\_\+for\+\_\+gpio}!unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}}
+\subsubsection{\texorpdfstring{rcc\+\_\+setups\+\_\+for\+\_\+gpio()}{rcc\_setups\_for\_gpio()}}
+{\footnotesize\ttfamily void rcc\+\_\+setups\+\_\+for\+\_\+gpio (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ R\+CC setups for needed gpios 
+\begin{DoxyCode}
+32                                \{
+34 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__rcc_8c_a1d1f9b3b84e39cfc042dd40a6a4cc545}\label{unsere__rcc_8c_a1d1f9b3b84e39cfc042dd40a6a4cc545}} 
+\index{unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}!rcc\+\_\+setups\+\_\+for\+\_\+uart@{rcc\+\_\+setups\+\_\+for\+\_\+uart}}
+\index{rcc\+\_\+setups\+\_\+for\+\_\+uart@{rcc\+\_\+setups\+\_\+for\+\_\+uart}!unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}}
+\subsubsection{\texorpdfstring{rcc\+\_\+setups\+\_\+for\+\_\+uart()}{rcc\_setups\_for\_uart()}}
+{\footnotesize\ttfamily void rcc\+\_\+setups\+\_\+for\+\_\+uart (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ To configure a timer it is enabled for uart to be used 
+\begin{DoxyCode}
+36                                \{
+37     
+39     rcc\_periph\_clock\_enable(RCC\_GPIOA);
+40     rcc\_periph\_clock\_enable(RCC\_USART1);
+41 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__rcc_8c_af6cdce8515b9e6a6181f44410de7e793}\label{unsere__rcc_8c_af6cdce8515b9e6a6181f44410de7e793}} 
+\index{unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}!setting\+\_\+clock@{setting\+\_\+clock}}
+\index{setting\+\_\+clock@{setting\+\_\+clock}!unsere\+\_\+rcc.\+c@{unsere\+\_\+rcc.\+c}}
+\subsubsection{\texorpdfstring{setting\+\_\+clock()}{setting\_clock()}}
+{\footnotesize\ttfamily void setting\+\_\+clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES
+
+$<$ All the instances are configurted 
+\begin{DoxyCode}
+28                          \{
+29     rcc\_clock\_setup\_in\_hse\_8mhz\_out\_72mhz(); 
+30 \}
+\end{DoxyCode}

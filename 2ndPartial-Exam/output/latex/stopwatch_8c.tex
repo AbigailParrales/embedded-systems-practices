@@ -1,0 +1,147 @@
+\hypertarget{stopwatch_8c}{}\section{3ra\+\_\+capa/stopwatch.c File Reference}
+\label{stopwatch_8c}\index{3ra\+\_\+capa/stopwatch.\+c@{3ra\+\_\+capa/stopwatch.\+c}}
+{\ttfamily \#include \char`\"{}../1ra\+\_\+capa/unsere\+\_\+gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../1ra\+\_\+capa/unsere\+\_\+uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../1ra\+\_\+capa/unsere\+\_\+rcc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../2da\+\_\+capa/button.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stopwatch.\+h\char`\"{}}\newline
+Include dependency graph for stopwatch.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{stopwatch_8c_ae145f2400794a3ae1513a71e222f80b7}{obtain\+\_\+time} (void)
+\item 
+char \hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\+\_\+status} (void)
+\item 
+void \hyperlink{stopwatch_8c_a119d21005ab6e21b66104be62826a5cd}{stopwatch\+\_\+init} (void)
+\item 
+void \hyperlink{stopwatch_8c_a5d12ded9e03d3bf2f6fd69ad12725d54}{run\+\_\+timer} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{stopwatch_8c_a42715f65f02da52edc5b22021d8ae670}{time} = 0
+\item 
+char \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}\label{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!obtain\+\_\+status@{obtain\+\_\+status}}
+\index{obtain\+\_\+status@{obtain\+\_\+status}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{obtain\+\_\+status()}{obtain\_status()}}
+{\footnotesize\ttfamily char obtain\+\_\+status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+47                         \{
+48     \textcolor{keywordflow}{return} \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status};
+49 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{stopwatch_8c_ae145f2400794a3ae1513a71e222f80b7}\label{stopwatch_8c_ae145f2400794a3ae1513a71e222f80b7}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!obtain\+\_\+time@{obtain\+\_\+time}}
+\index{obtain\+\_\+time@{obtain\+\_\+time}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{obtain\+\_\+time()}{obtain\_time()}}
+{\footnotesize\ttfamily int obtain\+\_\+time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+43                       \{
+44     \textcolor{keywordflow}{return} \hyperlink{stopwatch_8c_a42715f65f02da52edc5b22021d8ae670}{time};
+45 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{stopwatch_8c_a5d12ded9e03d3bf2f6fd69ad12725d54}\label{stopwatch_8c_a5d12ded9e03d3bf2f6fd69ad12725d54}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!run\+\_\+timer@{run\+\_\+timer}}
+\index{run\+\_\+timer@{run\+\_\+timer}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{run\+\_\+timer()}{run\_timer()}}
+{\footnotesize\ttfamily void run\+\_\+timer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ Running
+
+$<$logear status
+
+$<$ poner Led a parpadear
+
+$<$ Stop
+
+$<$ logear status
+
+$<$ Reset
+
+$<$ Running
+
+$<$ logear status
+
+$<$ poner Led a parpadear
+
+$<$ Continued
+
+$<$ Running
+
+$<$ logear status
+
+$<$ poner Led a parpadear
+
+$<$ Running
+
+$<$ Running
+
+$<$ logear status
+
+$<$ poner Led a parpadear 
+\begin{DoxyCode}
+60                      \{
+61     \textcolor{keywordflow}{if} ((\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 0) && \hyperlink{button_8c_ac9cfca35b1637ade8cb8362eccd700f9}{BUTTON\_START\_READ}())\{ \textcolor{comment}{//Start}
+65 \textcolor{comment}{}        \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 1;
+66     \}
+67     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (((\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 1)||(\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 3)) && 
+      \hyperlink{button_8c_a20c5b88c1e0b254d7408c5c23904dee3}{BUTTON\_STOP\_READ}())\{ 
+69         \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 2;
+70     \}
+71     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (((\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 1)||(\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 2)||(
+      \hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 3)) && \hyperlink{button_8c_a8517d5a12fee80cf6f5f55ed076a4488}{BUTTON\_RESET\_READ}())\{ 
+72         \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 0;
+73         \hyperlink{stopwatch_8c_a42715f65f02da52edc5b22021d8ae670}{time} = 0;
+77         \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 1;
+78     \}
+79     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 2) && \hyperlink{button_8c_ac9cfca35b1637ade8cb8362eccd700f9}{BUTTON\_START\_READ}())\{ 
+83         \hyperlink{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}{status} = 3;
+84     \}
+85     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 1)||(\hyperlink{stopwatch_8c_a5e3faafc8a78f2008f9467f5973927fa}{obtain\_status}() == 3))\{ 
+89     \}
+90     
+91 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{stopwatch_8c_a119d21005ab6e21b66104be62826a5cd}\label{stopwatch_8c_a119d21005ab6e21b66104be62826a5cd}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!stopwatch\+\_\+init@{stopwatch\+\_\+init}}
+\index{stopwatch\+\_\+init@{stopwatch\+\_\+init}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{stopwatch\+\_\+init()}{stopwatch\_init()}}
+{\footnotesize\ttfamily void stopwatch\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ All the set up are included in order to make the system works 
+\begin{DoxyCode}
+51                           \{
+52     
+54     \hyperlink{unsere__rcc_8c_ad9629fea3c3a45930521dc19a5c6e842}{rcc\_setup}();
+55     \hyperlink{unsere__gpio_8c_a744014c21b3840c73d5cd31242a5fe6e}{gpio\_setup}();
+56     \hyperlink{unsere__uart_8c_a8c40de5eea2a353839e3b2899522d22d}{uart\_setup}();
+57 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}\label{stopwatch_8c_a051c9e198ee930358372c407a17e8b78}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!status@{status}}
+\index{status@{status}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily char status = 0}
+
+\mbox{\Hypertarget{stopwatch_8c_a42715f65f02da52edc5b22021d8ae670}\label{stopwatch_8c_a42715f65f02da52edc5b22021d8ae670}} 
+\index{stopwatch.\+c@{stopwatch.\+c}!time@{time}}
+\index{time@{time}!stopwatch.\+c@{stopwatch.\+c}}
+\subsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily int time = 0}
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES 

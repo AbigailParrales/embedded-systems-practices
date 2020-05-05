@@ -1,0 +1,13 @@
+digraph "2da_capa" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  dir_884e581d170be04cab38d5cf2b9f0f70 [shape=box, label="2da_capa", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_884e581d170be04cab38d5cf2b9f0f70.html"];
+  dir_db023452b303fd933c89a4edd54336e1 [shape=box label="3ra_capa" URL="dir_db023452b303fd933c89a4edd54336e1.html"];
+  dir_8a3d003eb012be7b942630563522f243 [shape=box label="1ra_capa" URL="dir_8a3d003eb012be7b942630563522f243.html"];
+  dir_db023452b303fd933c89a4edd54336e1->dir_8a3d003eb012be7b942630563522f243 [headlabel="3", labeldistance=1.5 headhref="dir_000002_000000.html"];
+  dir_db023452b303fd933c89a4edd54336e1->dir_884e581d170be04cab38d5cf2b9f0f70 [headlabel="1", labeldistance=1.5 headhref="dir_000002_000001.html"];
+  dir_8a3d003eb012be7b942630563522f243->dir_884e581d170be04cab38d5cf2b9f0f70 [headlabel="1", labeldistance=1.5 headhref="dir_000000_000001.html"];
+  dir_884e581d170be04cab38d5cf2b9f0f70->dir_db023452b303fd933c89a4edd54336e1 [headlabel="1", labeldistance=1.5 headhref="dir_000001_000002.html"];
+  dir_884e581d170be04cab38d5cf2b9f0f70->dir_8a3d003eb012be7b942630563522f243 [headlabel="1", labeldistance=1.5 headhref="dir_000001_000000.html"];
+}

@@ -1,0 +1,59 @@
+\hypertarget{unsere__uart_8c}{}\section{1ra\+\_\+capa/unsere\+\_\+uart.c File Reference}
+\label{unsere__uart_8c}\index{1ra\+\_\+capa/unsere\+\_\+uart.\+c@{1ra\+\_\+capa/unsere\+\_\+uart.\+c}}
+{\ttfamily \#include $<$libopencm3/cm3/nvic.\+h$>$}\newline
+{\ttfamily \#include $<$libopencm3/stm32/usart.\+h$>$}\newline
+{\ttfamily \#include $<$libopencm3/stm32/timer.\+h$>$}\newline
+{\ttfamily \#include $<$libopencm3/stm32/adc.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}unsere\+\_\+uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../2da\+\_\+capa/unsere\+\_\+log.\+h\char`\"{}}\newline
+Include dependency graph for unsere\+\_\+uart.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unsere__uart_8c_a8c40de5eea2a353839e3b2899522d22d}{uart\+\_\+setup} (void)
+\item 
+int \hyperlink{unsere__uart_8c_a9ecdce33e4cc81ebe25c8bb371a48b98}{is\+\_\+number} (char ch)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unsere__uart_8c_a9ecdce33e4cc81ebe25c8bb371a48b98}\label{unsere__uart_8c_a9ecdce33e4cc81ebe25c8bb371a48b98}} 
+\index{unsere\+\_\+uart.\+c@{unsere\+\_\+uart.\+c}!is\+\_\+number@{is\+\_\+number}}
+\index{is\+\_\+number@{is\+\_\+number}!unsere\+\_\+uart.\+c@{unsere\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{is\+\_\+number()}{is\_number()}}
+{\footnotesize\ttfamily int is\+\_\+number (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+$<$ Return if the A\+S\+C\+II is a number from 0 to 9. 
+\begin{DoxyCode}
+53                        \{
+54     \textcolor{keywordflow}{if}((ch >= 48) && (ch<=57))\{
+55         \textcolor{keywordflow}{return} 1;
+56     \} \textcolor{keywordflow}{else} \{
+57         \textcolor{keywordflow}{return} 0;
+58     \}
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__uart_8c_a8c40de5eea2a353839e3b2899522d22d}\label{unsere__uart_8c_a8c40de5eea2a353839e3b2899522d22d}} 
+\index{unsere\+\_\+uart.\+c@{unsere\+\_\+uart.\+c}!uart\+\_\+setup@{uart\+\_\+setup}}
+\index{uart\+\_\+setup@{uart\+\_\+setup}!unsere\+\_\+uart.\+c@{unsere\+\_\+uart.\+c}}
+\subsubsection{\texorpdfstring{uart\+\_\+setup()}{uart\_setup()}}
+{\footnotesize\ttfamily void uart\+\_\+setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES $<$ Baudrate configurated at 9600
+
+$<$ Data will be 8 bit long
+
+$<$ Local enable of interruption 
+\begin{DoxyCode}
+39                       \{
+40     usart\_set\_baudrate(USART1, 9600); 
+41     usart\_set\_databits(USART1, 8); 
+42     usart\_set\_stopbits(USART1, USART\_STOPBITS\_1); 
+43     usart\_set\_mode(USART1, USART\_MODE\_TX\_RX);
+44     usart\_set\_parity(USART1, USART\_PARITY\_NONE);
+45     usart\_set\_flow\_control(USART1, USART\_FLOWCONTROL\_NONE);
+46     usart\_enable\_rx\_interrupt(USART1); 
+47     usart\_enable(USART1);
+48 \}
+\end{DoxyCode}

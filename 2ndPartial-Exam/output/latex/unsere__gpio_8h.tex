@@ -1,0 +1,75 @@
+\hypertarget{unsere__gpio_8h}{}\section{1ra\+\_\+capa/unsere\+\_\+gpio.h File Reference}
+\label{unsere__gpio_8h}\index{1ra\+\_\+capa/unsere\+\_\+gpio.\+h@{1ra\+\_\+capa/unsere\+\_\+gpio.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unsere__gpio_8h_a4af49d989285a6c3aaaec2af9dfed088}{gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns} (void)
+\item 
+void \hyperlink{unsere__gpio_8h_a3e9267f304f0b0e00f1f7f8b504d2c8c}{gpio\+\_\+setups\+\_\+for\+\_\+uart} (void)
+\item 
+void \hyperlink{unsere__gpio_8h_aa419f78c483cdd257d96e8f4bac38343}{gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds} (void)
+\item 
+void \hyperlink{unsere__gpio_8h_a744014c21b3840c73d5cd31242a5fe6e}{gpio\+\_\+setup} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unsere__gpio_8h_a744014c21b3840c73d5cd31242a5fe6e}\label{unsere__gpio_8h_a744014c21b3840c73d5cd31242a5fe6e}} 
+\index{unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}!gpio\+\_\+setup@{gpio\+\_\+setup}}
+\index{gpio\+\_\+setup@{gpio\+\_\+setup}!unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+setup()}{gpio\_setup()}}
+{\footnotesize\ttfamily void gpio\+\_\+setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+65                       \{
+66     \hyperlink{unsere__gpio_8c_a3e9267f304f0b0e00f1f7f8b504d2c8c}{gpio\_setups\_for\_uart}();
+67     \hyperlink{unsere__gpio_8c_aa419f78c483cdd257d96e8f4bac38343}{gpio\_setups\_for\_LEDs}();
+68     \hyperlink{unsere__gpio_8c_a4af49d989285a6c3aaaec2af9dfed088}{gpio\_setups\_for\_BUTTONs}();
+69 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__gpio_8h_a4af49d989285a6c3aaaec2af9dfed088}\label{unsere__gpio_8h_a4af49d989285a6c3aaaec2af9dfed088}} 
+\index{unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}!gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns@{gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns}}
+\index{gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns@{gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns}!unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns()}{gpio\_setups\_for\_BUTTONs()}}
+{\footnotesize\ttfamily void gpio\+\_\+setups\+\_\+for\+\_\+\+B\+U\+T\+T\+O\+Ns (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ Conditions to confirm if macro-\/identifier is defined $<$ G\+P\+IO conf for wanted B\+U\+T\+T\+O\+Ns 
+\begin{DoxyCode}
+52                                    \{
+54 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__gpio_8h_aa419f78c483cdd257d96e8f4bac38343}\label{unsere__gpio_8h_aa419f78c483cdd257d96e8f4bac38343}} 
+\index{unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}!gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds@{gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds}}
+\index{gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds@{gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds}!unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds()}{gpio\_setups\_for\_LEDs()}}
+{\footnotesize\ttfamily void gpio\+\_\+setups\+\_\+for\+\_\+\+L\+E\+Ds (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ G\+P\+IO conf for wanted L\+E\+Ds 
+\begin{DoxyCode}
+48                                 \{
+50 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__gpio_8h_a3e9267f304f0b0e00f1f7f8b504d2c8c}\label{unsere__gpio_8h_a3e9267f304f0b0e00f1f7f8b504d2c8c}} 
+\index{unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}!gpio\+\_\+setups\+\_\+for\+\_\+uart@{gpio\+\_\+setups\+\_\+for\+\_\+uart}}
+\index{gpio\+\_\+setups\+\_\+for\+\_\+uart@{gpio\+\_\+setups\+\_\+for\+\_\+uart}!unsere\+\_\+gpio.\+h@{unsere\+\_\+gpio.\+h}}
+\subsubsection{\texorpdfstring{gpio\+\_\+setups\+\_\+for\+\_\+uart()}{gpio\_setups\_for\_uart()}}
+{\footnotesize\ttfamily void gpio\+\_\+setups\+\_\+for\+\_\+uart (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES We are using Specifically U\+A\+R\+T1 Enable U\+A\+RT TX (P\+A9) In order to use the pin A9 to transmit the information.
+
+Enable U\+A\+RT RX (P\+A10) In order to use the pin A10 to read the information.
+\begin{DoxyCode}
+29                                 \{
+30     gpio\_set\_mode(GPIOA, GPIO\_MODE\_INPUT, GPIO\_CNF\_INPUT\_ANALOG,
+31     GPIO0);
+32 
+37     gpio\_set\_mode(GPIOA, GPIO\_MODE\_OUTPUT\_50\_MHZ, 
+38           GPIO\_CNF\_OUTPUT\_ALTFN\_PUSHPULL, GPIO\_USART1\_TX);
+39 
+44     gpio\_set\_mode(GPIOA, GPIO\_MODE\_INPUT, GPIO\_CNF\_INPUT\_PULL\_UPDOWN,
+45                   GPIO\_USART1\_RX);
+46 \}
+\end{DoxyCode}

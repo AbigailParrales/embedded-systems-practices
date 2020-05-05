@@ -1,0 +1,54 @@
+\hypertarget{led_8c}{}\section{2da\+\_\+capa/led.c File Reference}
+\label{led_8c}\index{2da\+\_\+capa/led.\+c@{2da\+\_\+capa/led.\+c}}
+{\ttfamily \#include $<$libopencm3/stm32/gpio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+Include dependency graph for led.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{led_8c_a3d14707bd88976c54059f5fb968e55d4}{L\+E\+D\+\_\+\+ON} (uint32\+\_\+t gpioport, uint16\+\_\+t gpios)
+\item 
+void \hyperlink{led_8c_a604591b9c54fcfdc0ee8faf1bfc65b12}{L\+E\+D\+\_\+\+O\+FF} (uint32\+\_\+t gpioport, uint16\+\_\+t gpios)
+\item 
+void \hyperlink{led_8c_ab0b1348636d7e3ef5e02f7ac9950f2c4}{L\+E\+D\+\_\+\+T\+O\+G\+G\+LE} (uint32\+\_\+t gpioport, uint16\+\_\+t gpios)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{led_8c_a604591b9c54fcfdc0ee8faf1bfc65b12}\label{led_8c_a604591b9c54fcfdc0ee8faf1bfc65b12}} 
+\index{led.\+c@{led.\+c}!L\+E\+D\+\_\+\+O\+FF@{L\+E\+D\+\_\+\+O\+FF}}
+\index{L\+E\+D\+\_\+\+O\+FF@{L\+E\+D\+\_\+\+O\+FF}!led.\+c@{led.\+c}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+O\+F\+F()}{LED\_OFF()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+O\+FF (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{gpioport,  }\item[{uint16\+\_\+t}]{gpios }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+34                                                 \{
+35     gpio\_set(gpioport, gpios);
+36 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{led_8c_a3d14707bd88976c54059f5fb968e55d4}\label{led_8c_a3d14707bd88976c54059f5fb968e55d4}} 
+\index{led.\+c@{led.\+c}!L\+E\+D\+\_\+\+ON@{L\+E\+D\+\_\+\+ON}}
+\index{L\+E\+D\+\_\+\+ON@{L\+E\+D\+\_\+\+ON}!led.\+c@{led.\+c}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+O\+N()}{LED\_ON()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+ON (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{gpioport,  }\item[{uint16\+\_\+t}]{gpios }\end{DoxyParamCaption})}
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES 
+\begin{DoxyCode}
+30                                                \{
+31     gpio\_clear(gpioport, gpios);
+32 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{led_8c_ab0b1348636d7e3ef5e02f7ac9950f2c4}\label{led_8c_ab0b1348636d7e3ef5e02f7ac9950f2c4}} 
+\index{led.\+c@{led.\+c}!L\+E\+D\+\_\+\+T\+O\+G\+G\+LE@{L\+E\+D\+\_\+\+T\+O\+G\+G\+LE}}
+\index{L\+E\+D\+\_\+\+T\+O\+G\+G\+LE@{L\+E\+D\+\_\+\+T\+O\+G\+G\+LE}!led.\+c@{led.\+c}}
+\subsubsection{\texorpdfstring{L\+E\+D\+\_\+\+T\+O\+G\+G\+L\+E()}{LED\_TOGGLE()}}
+{\footnotesize\ttfamily void L\+E\+D\+\_\+\+T\+O\+G\+G\+LE (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{gpioport,  }\item[{uint16\+\_\+t}]{gpios }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}
+38                                                    \{
+39     gpio\_toggle(gpioport, gpios);
+40 \}
+\end{DoxyCode}

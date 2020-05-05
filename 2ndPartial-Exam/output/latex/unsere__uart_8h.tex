@@ -1,0 +1,82 @@
+\hypertarget{unsere__uart_8h}{}\section{1ra\+\_\+capa/unsere\+\_\+uart.h File Reference}
+\label{unsere__uart_8h}\index{1ra\+\_\+capa/unsere\+\_\+uart.\+h@{1ra\+\_\+capa/unsere\+\_\+uart.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for unsere\+\_\+uart.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unsere__uart_8h_a8c40de5eea2a353839e3b2899522d22d}{uart\+\_\+setup} (void)
+\item 
+void \hyperlink{unsere__uart_8h_a4a1e015cfd75efea5bfa93ee968beb22}{uart\+\_\+send\+\_\+char} (char ch)
+\item 
+void \hyperlink{unsere__uart_8h_adc69fc7ddbf428be032ffc7f9b2a948c}{uart\+\_\+send} (char $\ast$txt)
+\item 
+void \hyperlink{unsere__uart_8h_a40c3f0d9be7367fc03214e134eac6223}{parse\+\_\+message} (char $\ast$message\+\_\+expected, char char\+\_\+received)
+\item 
+int \hyperlink{unsere__uart_8h_a9ecdce33e4cc81ebe25c8bb371a48b98}{is\+\_\+number} (char ch)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unsere__uart_8h_a9ecdce33e4cc81ebe25c8bb371a48b98}\label{unsere__uart_8h_a9ecdce33e4cc81ebe25c8bb371a48b98}} 
+\index{unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}!is\+\_\+number@{is\+\_\+number}}
+\index{is\+\_\+number@{is\+\_\+number}!unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}}
+\subsubsection{\texorpdfstring{is\+\_\+number()}{is\_number()}}
+{\footnotesize\ttfamily int is\+\_\+number (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+$<$ Return if the A\+S\+C\+II is a number from 0 to 9. 
+\begin{DoxyCode}
+53                        \{
+54     \textcolor{keywordflow}{if}((ch >= 48) && (ch<=57))\{
+55         \textcolor{keywordflow}{return} 1;
+56     \} \textcolor{keywordflow}{else} \{
+57         \textcolor{keywordflow}{return} 0;
+58     \}
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{unsere__uart_8h_a40c3f0d9be7367fc03214e134eac6223}\label{unsere__uart_8h_a40c3f0d9be7367fc03214e134eac6223}} 
+\index{unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}!parse\+\_\+message@{parse\+\_\+message}}
+\index{parse\+\_\+message@{parse\+\_\+message}!unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}}
+\subsubsection{\texorpdfstring{parse\+\_\+message()}{parse\_message()}}
+{\footnotesize\ttfamily void parse\+\_\+message (\begin{DoxyParamCaption}\item[{char $\ast$}]{message\+\_\+expected,  }\item[{char}]{char\+\_\+received }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unsere__uart_8h_adc69fc7ddbf428be032ffc7f9b2a948c}\label{unsere__uart_8h_adc69fc7ddbf428be032ffc7f9b2a948c}} 
+\index{unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}!uart\+\_\+send@{uart\+\_\+send}}
+\index{uart\+\_\+send@{uart\+\_\+send}!unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}}
+\subsubsection{\texorpdfstring{uart\+\_\+send()}{uart\_send()}}
+{\footnotesize\ttfamily void uart\+\_\+send (\begin{DoxyParamCaption}\item[{char $\ast$}]{txt }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unsere__uart_8h_a4a1e015cfd75efea5bfa93ee968beb22}\label{unsere__uart_8h_a4a1e015cfd75efea5bfa93ee968beb22}} 
+\index{unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}!uart\+\_\+send\+\_\+char@{uart\+\_\+send\+\_\+char}}
+\index{uart\+\_\+send\+\_\+char@{uart\+\_\+send\+\_\+char}!unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}}
+\subsubsection{\texorpdfstring{uart\+\_\+send\+\_\+char()}{uart\_send\_char()}}
+{\footnotesize\ttfamily void uart\+\_\+send\+\_\+char (\begin{DoxyParamCaption}\item[{char}]{ch }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unsere__uart_8h_a8c40de5eea2a353839e3b2899522d22d}\label{unsere__uart_8h_a8c40de5eea2a353839e3b2899522d22d}} 
+\index{unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}!uart\+\_\+setup@{uart\+\_\+setup}}
+\index{uart\+\_\+setup@{uart\+\_\+setup}!unsere\+\_\+uart.\+h@{unsere\+\_\+uart.\+h}}
+\subsubsection{\texorpdfstring{uart\+\_\+setup()}{uart\_setup()}}
+{\footnotesize\ttfamily void uart\+\_\+setup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+$<$ Conditions to confirm if macro-\/identifier is defined
+
+$<$ L\+I\+B\+R\+A\+R\+I\+ES $<$ Baudrate configurated at 9600
+
+$<$ Data will be 8 bit long
+
+$<$ Local enable of interruption 
+\begin{DoxyCode}
+39                       \{
+40     usart\_set\_baudrate(USART1, 9600); 
+41     usart\_set\_databits(USART1, 8); 
+42     usart\_set\_stopbits(USART1, USART\_STOPBITS\_1); 
+43     usart\_set\_mode(USART1, USART\_MODE\_TX\_RX);
+44     usart\_set\_parity(USART1, USART\_PARITY\_NONE);
+45     usart\_set\_flow\_control(USART1, USART\_FLOWCONTROL\_NONE);
+46     usart\_enable\_rx\_interrupt(USART1); 
+47     usart\_enable(USART1);
+48 \}
+\end{DoxyCode}
