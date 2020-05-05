@@ -3,18 +3,17 @@
 * Copyright 2020 ITESM                                                  *
 *                                                                       *
 *                                                                       *
-* ADC_UART                                                              *
+* Second Partial Exam                                                   *
 *                                                                       *
 * Autorhs:                                                              *
 * Jesús Enrique Luna Medina          A01632334                          *
 * Daniela abigail Parrales Mejía     A01228629                          *
 * Luis Cortés Leal                   A01631163                          *
+* Victor Joseph Guerrero             A01375994                          *
 *                                                                       *
-* Abril 2020                                                            *
-* The project titled ADC_UART is carried out with the purpose of        *
-* implementing a temperature sensing system which acquires the          *
-* values from the environment and delivers a response through           *
-* hardware using LEDs and software displaying on a Terminal.            *
+* Mayo  2020                                                            *
+* This program is a cronometer which includes three buttons             *
+* in order to control the functions of: Reset, Start and Stop           *
 *                                                                       *
 ************************************************************************/
 
@@ -25,15 +24,19 @@
 #include "../2da_capa/button.h"
 #include "stopwatch.h"
 
+/***********************************************************************/
+
 int time = 0;
 char status = 0;
-/**
-Status is a flag that shows the timer status
-Status = 0; Reset
-Status = 1; Started
-Status = 2; Stopped
-Status = 3; Continued
-*/
+
+/************************************************************************
+* Status is a flag that shows the timer status                          *
+* Status = 0; Reset                                                     *
+* Status = 1; Started                                                   *
+* Status = 2; Stopped                                                   *
+* Status = 3; Continued                                                 *
+*                                                                       *
+************************************************************************/
 
 /***********************************************************************/
 
@@ -53,36 +56,36 @@ void stopwatch_init(void) {
     uart_setup();
 }
 
-//State machine
+/*/!< State machine */
 void run_timer(void) {
     if ((obtain_status() == 0) && BUTTON_START_READ()){ //Start
-        //Running
-        //logear status
-        //poner Led a parpadear
+        /*!< Running */
+        /*!<logear status */
+        /*!< poner Led a parpadear */
         status = 1;
     }
-    else if (((obtain_status() == 1)||(obtain_status() == 3)) && BUTTON_STOP_READ()) { //Stop
-        //logear status
+    else if (((obtain_status() == 1)||(obtain_status() == 3)) && BUTTON_STOP_READ()){ /*!< Stop */
+        /*!< logear status */
         status = 2;
     }
-    else if (((obtain_status() == 1)||(obtain_status() == 2)||(obtain_status() == 3)) && BUTTON_RESET_READ()) {     //Reset
+    else if (((obtain_status() == 1)||(obtain_status() == 2)||(obtain_status() == 3)) && BUTTON_RESET_READ()){ /*!< Reset */
         status = 0;
         time = 0;
-        //Running
-        //logear status
-        //poner Led a parpadear
+        /*!< Running */
+        /*!< logear status */
+        /*!< poner Led a parpadear */
         status = 1;
     }
-    else if ((obtain_status() == 2) && BUTTON_START_READ()) {     //Continued
-        //Running
-        //logear status
-        //poner Led a parpadear
+    else if ((obtain_status() == 2) && BUTTON_START_READ()){ /*!< Continued */
+        /*!< Running */
+        /*!< logear status */
+        /*!< poner Led a parpadear */
         status = 3;
     }
-    else if((obtain_status() == 1)||(obtain_status() == 3)) {   // Running
-        //Running
-        //logear status
-        //poner Led a parpadear
+    else if((obtain_status() == 1)||(obtain_status() == 3)){ /*!< Running */
+        /*!< Running */
+        /*!< logear status */
+        /*!< poner Led a parpadear */
     }
     
 }
