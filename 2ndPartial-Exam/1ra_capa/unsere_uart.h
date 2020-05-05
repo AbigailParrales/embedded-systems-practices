@@ -29,7 +29,6 @@ void uart_send_char(char ch);
 void uart_send(char * txt);
 void parse_message(char *message_expected, char char_received);
 int is_number(char ch);
-char* number_2_string(int num);
 
 /**********************************************************************/
 
