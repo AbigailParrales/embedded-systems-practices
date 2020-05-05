@@ -1,20 +1,19 @@
-  
+
 /************************************************************************
 * Copyright 2020 ITESM                                                  *
 *                                                                       *
 *                                                                       *
-* ADC_UART                                                              *
+* Second Partial Exam                                                   *
 *                                                                       *
 * Autorhs:                                                              *
 * Jesús Enrique Luna Medina          A01632334                          *
 * Daniela abigail Parrales Mejía     A01228629                          *
 * Luis Cortés Leal                   A01631163                          *
+* Victor Joseph Guerrero             A01375994                          *
 *                                                                       *
-* Abril 2020                                                            *
-* The project titled ADC_UART is carried out with the purpose of        *
-* implementing a temperature sensing system which acquires the          *
-* values from the environment and delivers a response through           *
-* hardware using LEDs and software displaying on a Terminal.            *
+* Mayo  2020                                                            *
+* This program is a cronometer which includes three buttons             *
+* in order to control the functions of: Reset, Start and Stop           *
 *                                                                       *
 ************************************************************************/
 
