@@ -47,6 +47,8 @@ void uart_setup(void) {
     usart_enable(USART1);
 }
 
+/*******************************************************************/
+
 /*!< Return if the ASCII is a number from 0 to 9. */
 int is_number(char ch) {
     if((ch >= 48) && (ch<=57)){
@@ -56,24 +58,4 @@ int is_number(char ch) {
     }
 }
 
-char* number_2_string(int num) {
-    int tmp_num = num;
-
-    static char tmp_s[4];
-
-    char centenas = 0;
-    char decenas = 0;
-    char unidades = 0;
-
-    unidades = tmp_num%10;
-    decenas = ((tmp_num%100) - unidades) / 10;
-    centenas = ((tmp_num%1000)-((decenas*10)+unidades))/100;
-
-    tmp_s[0] = centenas + 48;
-    tmp_s[1] = decenas + 48;
-    tmp_s[2] = unidades + 48;
-
-    uart_send(tmp_s);
-
-    return tmp_s;
-}
+/*******************************************************************/
