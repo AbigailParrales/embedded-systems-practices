@@ -3,6 +3,7 @@ Deliverables
 1. Code of the tasks
 2. Videos 
     https://youtu.be/Vm4n4MX9r80
+    only usb https://youtu.be/GGLooq-M6zw
 3. Team member contributions
 
 Abigail
